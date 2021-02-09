@@ -131,11 +131,9 @@ end
 def num_points_scored(player_name)
 game_hash.each do |key,value|
 value[:players].each do |inner_key|
-  #inner_key.each do |k,v|
   if inner_key[:player_name] == player_name
     return inner_key[:points]
   end
-#binding.pry
 end
 end
 end
@@ -162,13 +160,9 @@ end
 team_colors("Charlotte Hornets")
 
 def team_names
-  new_array = []
-  a = game_hash[:home][:team_name]
-  b = game_hash[:away][:team_name]
-  new_array << a
-  new_array << b
-  p new_array
+p [game_hash[:home][:team_name], game_hash[:away][:team_name]]
 end
+team_names
 
 def player_numbers(team_name)
   new_array = []
@@ -200,7 +194,6 @@ def big_shoe_rebounds
     value[:players].each do |inner_value|
       if inner_value[:shoe] > 18
         return inner_value[:rebounds]
-      
       end
     end
   end

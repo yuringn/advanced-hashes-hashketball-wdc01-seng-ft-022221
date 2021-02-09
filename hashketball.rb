@@ -195,7 +195,6 @@ def big_shoe_rebounds
       if inner_value[:shoe] > 18
         return inner_value[:rebounds]
       end
-    end
   end
 end
 big_shoe_rebounds

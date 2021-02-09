@@ -128,24 +128,27 @@ def game_hash
   }
 end
 
+
+def players
+  (game_hash[:home][:players]).concat(game_hash[:away][:players])
+  end
+players
+
 def num_points_scored(player_name)
-game_hash.each do |key,value|
-value[:players].each do |inner_key|
+players.each do |inner_key|
   if inner_key[:player_name] == player_name
     return inner_key[:points]
   end
 end
 end
-end
 num_points_scored("Kemba Walker")
 
+
 def shoe_size(player_name)
-  game_hash.each do |key,value|
-    value[:players].each do |inner_key|
+    players.each do |inner_key|
       if inner_key[:player_name] == player_name
-        return inner_key[:shoe]
+        p inner_key[:shoe]
       end
-    end
   end
 end
 shoe_size("Bismack Biyombo")

@@ -1,4 +1,4 @@
-require './hashketball.rb'
+
 require "pry"
 
 def game_hash
@@ -129,8 +129,80 @@ def game_hash
 end
 
 def num_points_scored(player_name)
-  binding.pry
-game_hash each do |key,value|
-binding.pry
+game_hash.each do |key,value|
+value[:players].each do |inner_key|
+  #inner_key.each do |k,v|
+  if inner_key[:player_name] == player_name
+    return inner_key[:points]
+  end
+#binding.pry
 end
 end
+end
+num_points_scored("Kemba Walker")
+
+def shoe_size(player_name)
+  game_hash.each do |key,value|
+    value[:players].each do |inner_key|
+      if inner_key[:player_name] == player_name
+        return inner_key[:shoe]
+      end
+    end
+  end
+end
+shoe_size("Bismack Biyombo")
+
+def team_colors(team_name)
+game_hash.each do |key,value|
+  if team_name == value[:team_name]
+    return value[:colors]
+  end
+end
+end
+team_colors("Charlotte Hornets")
+
+def team_names
+  new_array = []
+  a = game_hash[:home][:team_name]
+  b = game_hash[:away][:team_name]
+  new_array << a
+  new_array << b
+  p new_array
+end
+
+def player_numbers(team_name)
+  new_array = []
+  game_hash.each do |key,value|
+    value[:players].each do |inner_key|
+      if value[:team_name] == team_name
+        a = inner_key[:number]
+        new_array << a
+      end
+end
+end
+new_array.sort!
+end
+player_numbers("Brooklyn Nets")
+
+def player_stats(player_name)
+game_hash.each do |key,value|
+value[:players].each do |inner_key|
+  if inner_key[:player_name] == player_name
+    return inner_key
+  end
+end
+end
+end
+player_stats("Reggie Evans")
+
+def big_shoe_rebounds
+  game_hash.each do |key,value|
+    value[:players].each do |inner_value|
+      if inner_value[:shoe] > 18
+        return inner_value[:rebounds]
+      
+      end
+    end
+  end
+end
+big_shoe_rebounds

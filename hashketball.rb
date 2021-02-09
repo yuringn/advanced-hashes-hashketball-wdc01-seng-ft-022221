@@ -147,7 +147,7 @@ num_points_scored("Kemba Walker")
 def shoe_size(player_name)
     players.each do |inner_key|
       if inner_key[:player_name] == player_name
-        p inner_key[:shoe]
+        return inner_key[:shoe]
       end
   end
 end
@@ -182,12 +182,10 @@ end
 player_numbers("Brooklyn Nets")
 
 def player_stats(player_name)
-game_hash.each do |key,value|
-value[:players].each do |inner_key|
+players.each do |inner_key|
   if inner_key[:player_name] == player_name
-    return inner_key
+    p inner_key
   end
-end
 end
 end
 player_stats("Reggie Evans")
